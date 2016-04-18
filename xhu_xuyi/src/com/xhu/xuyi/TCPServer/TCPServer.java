@@ -38,7 +38,8 @@ public class TCPServer {
 			   int port = socket.getPort();
 			   String stringPort = String.valueOf(port);
 			   socketMap.put(socket.getInetAddress().getHostAddress()+"&"+stringPort, socket);
-			   System.out.println("地址为："+socket.getInetAddress().getHostAddress()+" 的客户端连接了服务端...");
+			   System.out.println("地址为："+socket.getInetAddress().getHostAddress()+":"
+			   +socket.getPort()+" 的客户端连接了服务端...");
 			   
 			   //服务器内部通过Socket发送到Server端的数据 ， 再发送到指定的远程客户端
 			   if(socket.getInetAddress().equals(Inet4Address.getLocalHost()) && 
@@ -126,7 +127,7 @@ public class TCPServer {
 								   for (int i = 0; i < len; i++) {
 									   sb.append(buf[i]);
 								   }
-								   System.out.println(socket.getInetAddress().getHostAddress()
+								   System.out.println(socket.getInetAddress().getHostAddress()+"-"
 										   +socket.getPort()+":"+sb.toString());
 							   }
 							   socket.close();
